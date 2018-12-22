@@ -23,3 +23,9 @@ before_script:
 - bundle exec rake db:create db:schema:load
 - bundle exec rake assets:clean assets:precompile
 script: bundle exec rspec --force-color
+deploy:
+  provider: heroku
+  api_key: "$HEROKU_AUTH_TOKEN"
+  app: fuckurl
+  on:
+    repo: shtakai/fuckedurl
