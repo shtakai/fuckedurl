@@ -29,6 +29,11 @@ RSpec.describe Link, type: :model do
         expect(link.save).to be false
       end
     end
+
+    it 'is different short_id between creations' do
+      link = create(:link, :valid_url)
+      expect(link.short_id).not_to eq valid_link.short_id
+    end
   end
 
   describe 'track short id to url' do
