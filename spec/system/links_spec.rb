@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'Links', type: :system do
+describe 'Links', type: :system, js: true do
   describe 'index' do
     before :each do
       2.times { create(:link, :valid_url) }
