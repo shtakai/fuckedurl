@@ -52,6 +52,8 @@ group :development, :test do
   gem 'pry-doc'
   gem "guard"
   gem "guard-rspec"
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
