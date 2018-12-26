@@ -13,6 +13,12 @@ describe 'Links', type: :system, js: true do
       expect(page).to have_content 'there are 2 fucked up link(s).'
     end
 
+    it 'has input form for shortening url' do
+      visit links_path
+      expect(page).to have_content 'Here I am being fucked short.'
+      expect(page).to have_selector('input.url')
+    end
+
     it 'shows 2 links' do
       visit links_path
       expect(page).to have_selector('.link>a.link_url', count: 2)

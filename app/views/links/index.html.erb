@@ -1,3 +1,10 @@
 <h1>links</h1>
 <div>there are <%= @link_count %> fucked up link(s).</div>
 <div><%= render partial: @links%></div>
+<div>Here I am being fucked short.</div>
+<div>
+  <%= simple_form_for @new_link do |f| %>
+    <%= f.input :url, placeholder: 'fucked up your url', input_html: { class: 'url' } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
