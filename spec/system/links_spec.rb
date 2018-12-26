@@ -25,6 +25,15 @@ describe 'Links', type: :system, js: true do
     end
   end
 
+  describe 'create short id from url' do
+    it '' do
+      visit links_path
+      fill_in 'fucked up your url', with: 'https://www.yahoo.com'
+      click_button 'Create Link'
+      expect(page).to have_content 'URL has been fucked.'
+    end
+  end
+
   # NOTE: VCR can't record system spec's transitions.
   # So that it must to write spec on request spec.
   # walkaround: use puffying-billy
