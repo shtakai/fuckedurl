@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   root 'pages#index'
   resources :links, only: %i(index)
   get '/redirect/:short_id', to: 'redirect#redirect', as: :redirect
