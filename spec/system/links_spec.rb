@@ -26,11 +26,34 @@ describe 'Links', type: :system, js: true do
   end
 
   describe 'create short id from url' do
-    it '' do
-      visit links_path
-      fill_in 'fucked up your url', with: 'https://www.yahoo.com'
-      click_button 'Create Link'
-      expect(page).to have_content 'URL has been fucked.'
+    context 'valid url' do
+      it 'can create short id' do
+        visit links_path
+        fill_in 'fucked up your url', with: 'https://www.yahoo.com'
+        click_button 'Create Link'
+        expect(page).to have_content 'URL has been fucked.'
+      end
+    end
+
+    context 'invalid url' do
+      it 'can not create short id' do
+        visit links_path
+        fill_in 'fucked up your url', with: 'www.yahoo.com'
+        click_button 'Create Link'
+        expect(page).to have_content 'URL has not been fucked.'
+        expect(page).to have_content ':invalid'
+      end
+    end
+
+    context 'dup url' do
+      it 'can not create short id' do
+        link = create(:link, :valid_url)
+        visit links_path
+        fill_in 'fucked up your url', with: link.url
+        click_button 'Create Link'
+        expect(page).to have_content 'URL has not been fucked.'
+        expect(page).to have_content 'taken'
+      end
     end
   end
 

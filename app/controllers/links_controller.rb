@@ -12,10 +12,11 @@ class LinksController < ApplicationController
     @generated_link = Link.new(link_params)
     respond_to do |format|
       if @generated_link.save
-        format.html { redirect_to links_path, notice: 'URL has been fucked.' }
+        flash[:notice] = 'URL has been fucked.'
       else
-        format.html { render :index }
+        flash[:caution] = "URL has not been fucked.: #{@generated_link.errors.details}"
       end
+      format.html { redirect_to links_path }
     end
   end
 
