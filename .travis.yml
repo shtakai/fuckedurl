@@ -36,3 +36,6 @@ deploy:
   app: fuckurl
   on:
     repo: shtakai/fuckedurl
+  run:
+    - "rake db:migrate"
+    - "rake cleanup"
