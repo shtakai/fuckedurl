@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "required": [
+    "url",
+    "short_id"
+  ],
+  "properties": {
+    "url": {
+      "type": "string"
+    },
+    "short_id": {
+      "type": "string"
+    }
+  }
+}
