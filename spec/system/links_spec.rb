@@ -51,8 +51,7 @@ describe 'Links', type: :system, js: true do
         visit links_path
         fill_in 'fucked up your url', with: link.url
         click_button 'Create Link'
-        expect(page).to have_content 'URL has not been fucked.'
-        expect(page).to have_content 'taken'
+        expect(page).to have_content 'URL has been fucked.'
       end
     end
   end

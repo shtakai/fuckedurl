@@ -7,7 +7,7 @@ class Api::V1::LinksController < ApiController
   end
 
   def show
-    link = Link.find(link_id_params)
+    link = Link.find(params[:id])
     render json: link
   end
 
@@ -18,12 +18,8 @@ class Api::V1::LinksController < ApiController
 
   private
 
-  def link_id_params
-    params.require(:link).permit(:id)
-  end
-
   def link_url_params
-    params.require(:link).permit(:url)
+    params.permit(:url)
   end
 end
 
