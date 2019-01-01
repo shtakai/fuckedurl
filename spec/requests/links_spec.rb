@@ -30,8 +30,12 @@ describe "Link API", type: :request do
     let(:link) { build(:link, :valid_url) }
     context 'link that not exist' do
       it 'can grab short_id' do
-        post api_v1_links_create_path url: link.url
+        expect {
+          post api_v1_links_create_path url: link.url
+        }.to change { Link.count }.by(1)
+        expect(Link.last.generated).to eq 1
         expect(response).to match_json_schema('link')
+
       end
     end
   end

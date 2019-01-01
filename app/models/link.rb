@@ -5,6 +5,7 @@ class Link < ApplicationRecord
   ).map(&:downcase).compact.freeze
 
   before_create :generate_short_id
+  before_save :inclement_generated
 
   validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
   validates :url, uniqueness: true
@@ -15,6 +16,10 @@ class Link < ApplicationRecord
 
   def generate_short_id
     self.short_id = Array.new(ID_LENGTH) { LETTER.sample }.join
+  end
+
+  def inclement_generated
+    self.generated += 1
   end
 
   def ensure_unique

@@ -24,9 +24,12 @@ RSpec.describe Link, type: :model do
 
     context 'already set same url' do
       it 'cannot create link' do
-        link = Link.new(url: valid_link.url)
-        expect(link).to be_invalid
-        expect(link.save).to be false
+        valid_link
+        expect {
+          link = Link.find_or_initialize_by(url: valid_link.url)
+          link.save
+        }.to change { Link.find(valid_link.id).generated }.by(1)
+
       end
     end
 
