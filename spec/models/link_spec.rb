@@ -7,7 +7,7 @@ RSpec.describe Link, type: :model do
   describe 'convert url to short url' do
     context 'normal url' do
       it 'has 0 redirect' do
-        expect(valid_link.redirect).to eq 0
+        expect(valid_link.generated).to eq 1
       end
 
       it 'converts w/10 letters' do
