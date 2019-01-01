@@ -9,7 +9,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @generated_link = Link.new(link_params)
+    @generated_link = Link.find_or_initialize_by(link_params)
     respond_to do |format|
       if @generated_link.save
         flash[:notice] = 'URL has been fucked.'
