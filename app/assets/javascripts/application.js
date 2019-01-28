@@ -13,4 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require OneSignalSDKUpdaterWorker
+//= require OneSignalSDKWorker
 //= require_tree .

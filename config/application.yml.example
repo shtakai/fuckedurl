@@ -1,5 +1,6 @@
 NEWRELIC_LISENSE_KEY: abcdefabcdef
 NEWRELIC_APP_NAME: 'appname'
+ONE_SIGNAL_APP_ID: 'onesignal app id
 # Add configuration values here, as shown below.
 #
 # pusher_app_id: "2954"
